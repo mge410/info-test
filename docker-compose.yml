@@ -28,7 +28,7 @@ services:
     volumes:
       - ./tmp/db:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: api
+      MYSQL_DATABASE: info-test
       MYSQL_ROOT_PASSWORD: root
     ports:
       - 8101:3306
