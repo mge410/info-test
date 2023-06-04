@@ -26,3 +26,4 @@ storage/*.key
 /package-lock.json
 /.php-cs-fixer.cache
 /tmp/
+/public/build/
