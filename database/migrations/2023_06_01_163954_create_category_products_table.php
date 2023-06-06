@@ -20,10 +20,12 @@ return new class extends Migration {
             $table->index('product_id', 'product_id_category_idx');
 
             $table->foreign('category_id', 'category_id_product_fk')
-                ->on('categories')->references('id');
+                ->on('categories')->references('id')
+                ->onDelete('cascade');;
 
             $table->foreign('product_id', 'product_id_category_fk')
-                ->on('products')->references('id');
+                ->on('products')->references('id')
+                ->onDelete('cascade');;
 
             $table->timestamps();
         });
