@@ -2,14 +2,13 @@
 
 namespace App\Http\Livewire\Category;
 
-use App\Models\Category;
 use Livewire\Component;
 
 class Edit extends Component
 {
     public $category, $countSubcategory;
     public $title, $description, $parent_id;
-    public $categories;
+    public $categoriesParents;
     public $formId;
 
     protected $rules = [
@@ -54,10 +53,8 @@ class Edit extends Component
 
     public function render()
     {
-        $this->categories = Category::whereNull('parent_id')
-            ->get(['id', 'title']);
         return view('livewire.category.edit', [
-            'categories' => $this->categories,
+            'categoriesParents' => $this->categoriesParents,
         ]);
     }
 }

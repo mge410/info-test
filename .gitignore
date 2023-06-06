@@ -27,3 +27,4 @@ storage/*.key
 /.php-cs-fixer.cache
 /tmp/
 /public/build/
+/public/vendor/
