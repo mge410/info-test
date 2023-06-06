@@ -26,7 +26,7 @@
                         <label for="exampleFormControlSelect1">Patent category</label>
                         <select wire:model.defer="parent_id" name="parent_id" class="form-control" id="parent_id">
                             <option value="">No parent</option>
-                            @foreach($categories as $category)
+                            @foreach($categoriesParents as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach
                         </select>

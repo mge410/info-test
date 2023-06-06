@@ -8,7 +8,7 @@ use Livewire\Component;
 class Store extends Component
 {
     public $title, $description, $parent_id;
-    public $categories;
+    public $categoriesParents;
     public $formId;
 
     protected $rules = [
@@ -37,10 +37,8 @@ class Store extends Component
 
     public function render()
     {
-        $this->categories = Category::whereNull('parent_id')
-            ->get(['id', 'title']);
         return view('livewire.category.store', [
-            'categories' => $this->categories,
+            'categoriesParents' => $this->categoriesParents,
         ]);
     }
 }

@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Panel extends Component
 {
-    public $categories;
+    public $categoriesParents;
 
     protected $listeners = ['updateCategoryList' => '$refresh'];
 
@@ -17,7 +17,7 @@ class Panel extends Component
 
     public function render()
     {
-        $this->categories = Category::whereNull('parent_id')->withCount('subcategory')->get();
-        return view('livewire.category.panel', ['categories' => $this->categories]);
+        $this->categoriesParents = Category::whereNull('parent_id')->withCount('subcategory')->get();
+        return view('livewire.category.panel', ['categoriesParents' => $this->categoriesParents]);
     }
 }

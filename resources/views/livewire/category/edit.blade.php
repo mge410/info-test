@@ -37,7 +37,7 @@
                             <select wire:model="parent_id" name="parent_id"
                                     class="form-control" id="parent_id">
                                 <option value="">No parent</option>
-                                @foreach($categories as $category)
+                                @foreach($categoriesParents as $category)
                                     <option
                                         value="{{ $category->id }}" @if($this->parent_id == $category->id) {{'selected'}} @endif >{{ $category->title }}</option>
                                 @endforeach
@@ -51,7 +51,7 @@
                             <select disabled wire:model="parent_id" name="parent_id"
                                     class="form-control" id="parent_id">
                                 <option value="">No parent</option>
-                                @foreach($categories as $category)
+                                @foreach($categoriesParents as $category)
                                     <option
                                         value="{{ $category->id }}" @if($this->parent_id == $category->id) {{'selected'}} @endif >{{ $category->title }}</option>
                                 @endforeach
