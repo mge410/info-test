@@ -14,7 +14,9 @@
                             ({{ $category->subcategory_count }})
                         </button>
                         <div class="col-5">
-                            <i class="bi link bi-pencil-fill text-primary m-1"></i>
+                            <div class="d-inline">
+                                <livewire:category.edit :category="$category" :wire:key="'edit-'.$category->id"/>
+                            </div>
                             <div class="d-inline">
                                 <livewire:category.destroy :category="$category" :wire:key="'delete-'.$category->id"/>
                             </div>
@@ -28,7 +30,9 @@
                                     <div class="row align-items-center">
                                         <button class="d-inline link col-6 btn btn-toggle" wire:click.defer="loadProducts({{ $subcategory->id }})">{{ $subcategory->title }}</button>
                                         <div class="col-5">
-                                            <i class="bi link bi-pencil-fill text-secondary m-1"></i>
+                                            <div class="d-inline">
+                                                <livewire:category.edit :category="$subcategory" :wire:key="'edit-'.$subcategory->id"/>
+                                            </div>
                                             <div class="d-inline">
                                                 <livewire:category.destroy :category="$subcategory" :wire:key="'delete-'.$subcategory->id"/>
                                             </div>
