@@ -9,6 +9,8 @@ class Panel extends Component
 {
     public $categories;
 
+    protected $listeners = ['updateCategoryList' => '$refresh'];
+
     public function loadProducts($categoryId){
         $this->emit('loadProducts', $categoryId);
     }
