@@ -29,10 +29,8 @@ class Store extends Component
             $data
         );
 
-        $this->emit('updateCategoryList');
-
         session()->flash('success', 'Category successfully created!');
-        $this->reset();
+        $this->emit('updateCategoryList');
     }
 
     public function render()

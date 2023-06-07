@@ -42,6 +42,10 @@ class Edit extends Component
     public function edit()
     {
         $data = $this->validate();
+        if ($data['parent_id'] == '')
+        {
+            $data['parent_id'] = null;
+        }
 
         $this->category->update(
             $data
