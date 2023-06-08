@@ -24,7 +24,7 @@
                     @enderror
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Patent category</label>
-                        <select wire:model.defer="parent_id" name="parent_id" class="form-control" id="parent_id">
+                        <select wire:model.defer="parent_id" name="parent_id" class="create-choice form-control" id="parent_id">
                             <option value="">No parent</option>
                             @foreach($categoriesParents as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
@@ -47,8 +47,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.querySelector('.flash-message').remove();
-    </script>
 </div>

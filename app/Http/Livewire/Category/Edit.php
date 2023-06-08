@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Category;
 
+use App\Models\Category;
 use Livewire\Component;
 
 class Edit extends Component
@@ -42,6 +43,10 @@ class Edit extends Component
     public function edit()
     {
         $data = $this->validate();
+        if (is_array($data['parent_id']))
+        {
+            $data['parent_id'] = $data['parent_id']['value'];
+        }
         if ($data['parent_id'] == '')
         {
             $data['parent_id'] = null;
@@ -51,12 +56,13 @@ class Edit extends Component
             $data
         );
 
-        $this->emit('updateCategoryList');
         session()->flash('edit', 'Category changed successfully!');
     }
 
     public function render()
     {
+        $this->categoriesParents = Category::whereNull('parent_id')->withCount('subcategory')->get();
+
         return view('livewire.category.edit', [
             'categoriesParents' => $this->categoriesParents,
         ]);

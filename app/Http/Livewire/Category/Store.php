@@ -25,6 +25,10 @@ class Store extends Component
     public function store()
     {
         $data = $this->validate();
+        if (is_array($data['parent_id']))
+        {
+            $data['parent_id'] = $data['parent_id']['value'];
+        }
         Category::create(
             $data
         );
@@ -35,6 +39,8 @@ class Store extends Component
 
     public function render()
     {
+        $this->categoriesParents = Category::whereNull('parent_id')->withCount('subcategory')->get();
+
         return view('livewire.category.store', [
             'categoriesParents' => $this->categoriesParents,
         ]);

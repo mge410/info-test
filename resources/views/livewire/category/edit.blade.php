@@ -34,8 +34,8 @@
                         @if($this->countSubcategory == 0)
                             <label for="exampleFormControlSelect1">Patent
                                 category</label>
-                            <select wire:model="parent_id" name="parent_id"
-                                    class="form-control" id="parent_id">
+                            <select wire:model.defer="parent_id" name="parent_id"
+                                    class="edit-choice form-control" id="parent_id">
                                 <option value="">No parent</option>
                                 @foreach($categoriesParents as $category)
                                     <option
@@ -72,7 +72,7 @@
                     @enderror
                     <div class="row justify-content-center">
                         <button class="col-3 btn btn-primary m-3 text-center">
-                            Create
+                            Update
                         </button>
                     </div>
                 </form>
