@@ -8,13 +8,18 @@ use Livewire\Component;
 class ShowList extends Component
 {
     public $category;
+    public $description;
     public $products;
+    public $productCount;
 
     protected $listeners = ['loadProducts' => 'loadProducts'];
 
     public function loadProducts($categoryId)
     {
-        $this->products = Category::findOrFail($categoryId)->products;
+        $this->category = Category::findOrFail($categoryId);
+        $this->products = $this->category->products;
+        $this->description = $this->category->description;
+        $this->productCount = $this->products->count();
     }
 
     public function render()

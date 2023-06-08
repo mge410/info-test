@@ -25,18 +25,22 @@ class Store extends Component
     public function store()
     {
         $data = $this->validate();
+        if (is_array($data['parent_id']))
+        {
+            $data['parent_id'] = $data['parent_id']['value'];
+        }
         Category::create(
             $data
         );
 
-        $this->emit('updateCategoryList');
-
         session()->flash('success', 'Category successfully created!');
-        $this->reset();
+        $this->emit('updateCategoryList');
     }
 
     public function render()
     {
+        $this->categoriesParents = Category::whereNull('parent_id')->withCount('subcategory')->get();
+
         return view('livewire.category.store', [
             'categoriesParents' => $this->categoriesParents,
         ]);

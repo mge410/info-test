@@ -14,6 +14,8 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"/>
+
     <!-- Scripts -->
     @livewireStyles
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -78,5 +80,23 @@
         </main>
         @livewireScripts
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 </body>
 </html>
+<script>
+    const createSelect = () => {
+        const elementCreate = document.querySelector('.create-choice')
+        const choicesCreate = new Choices(elementCreate)
+    }
+    createSelect()
+    Livewire.on('updateCategoryList', createSelect)
+
+
+    const editSelect = () => {
+        const elementsEdit = document.querySelectorAll('.edit-choice')
+        elementsEdit.forEach(choicesEdit => new Choices(choicesEdit))
+    }
+    editSelect()
+    Livewire.on('editCategoryList', editSelect)
+
+</script>
